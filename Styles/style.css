@@ -1,0 +1,64 @@
+* {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background: #202124;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#card {
+    display: grid;
+    position: relative;
+    padding-top: 94px;
+    padding-left: 11px;
+    bottom: 0px;
+    grid-template-columns: repeat(7, 86px);
+    grid-template-rows: repeat(5, 36.5px);
+    gap: 7.5px; 
+}
+
+#output {
+    height: 40px;
+    width: 356px;
+    background: #303134;
+    position: absolute;
+    top: 40px;
+    right: 19px;
+    color: white;
+    direction: rtl;
+    font-size: 2em;
+    font-family: 'open sans';
+}
+
+.btn {
+    background: white;
+    opacity: 0;
+    border-radius: 5px;
+}
+
+#first-button {
+    grid-area: 1/1/2/3;
+}
+
+
+#calc-img {
+    width: 673px;
+    height: 318px;
+    position: absolute;
+    z-index: -3;
+}
+
