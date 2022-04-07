@@ -28,26 +28,26 @@ let operator;
 equals.addEventListener('click', () => {
     smlOutputArray = smlOutput.textContent.split('');
     if (smlOutputArray.includes('+')) {
-        output.textContent = (smlOutput.textContent) ? add(Number(smlOutput.textContent.slice(2, smlOutput.textContent.length)), Number(output.textContent)) : add(Number(memory), Number(output.textContent));
-        smlOutput.textContent = ``;
-        clearPrompt = true;
-    } else if (smlOutputArray.includes('-')) {
-        output.textContent = (smlOutput.textContent) ? subtract(Number(smlOutput.textContent.slice(2, smlOutput.textContent.length)), Number(output.textContent)) : subtract(Number(memory), Number(output.textContent));
+        output.textContent = (smlOutput.textContent) ? add(Number(smlOutput.textContent.slice(0, smlOutput.textContent.length-2)), Number(output.textContent)) : add(Number(memory), Number(output.textContent));
         smlOutput.textContent = ``;
         clearPrompt = true;
     } else if (smlOutputArray.includes('*')) {
-        output.textContent = (smlOutput.textContent) ? multiply(Number(smlOutput.textContent.slice(2, smlOutput.textContent.length)), Number(output.textContent)) : multiply(Number(memory), Number(output.textContent));
+        output.textContent = (smlOutput.textContent) ? multiply(Number(smlOutput.textContent.slice(0, smlOutput.textContent.length-2)), Number(output.textContent)) : multiply(Number(memory), Number(output.textContent));
         smlOutput.textContent = ``;
         clearPrompt = true;
     } else if (smlOutputArray.includes('/')) {
-        output.textContent = (smlOutput.textContent) ? divide(Number(smlOutput.textContent.slice(2, smlOutput.textContent.length)), Number(output.textContent)) : divide(Number(memory), Number(output.textContent));
+        output.textContent = (smlOutput.textContent) ? divide(Number(smlOutput.textContent.slice(0, smlOutput.textContent.length-2)), Number(output.textContent)) : divide(Number(memory), Number(output.textContent));
         smlOutput.textContent = ``;
         clearPrompt = true;
     } else if (smlOutputArray.includes('^')) {
-        output.textContent = (smlOutput.textContent) ? power(Number(smlOutput.textContent.slice(2, smlOutput.textContent.length)), Number(output.textContent)) : power(Number(memory), Number(output.textContent));
+        output.textContent = (smlOutput.textContent) ? power(Number(smlOutput.textContent.slice(0, smlOutput.textContent.length-2)), Number(output.textContent)) : power(Number(memory), Number(output.textContent));
         smlOutput.textContent = ``;
         clearPrompt = true;
-    }
+    } else if (smlOutputArray.includes('-')) {
+        output.textContent = (smlOutput.textContent) ? subtract(Number(smlOutput.textContent.slice(0, smlOutput.textContent.length-2)), Number(output.textContent)) : subtract(Number(memory), Number(output.textContent));
+        smlOutput.textContent = ``;
+        clearPrompt = true;
+    } 
 });
 equals.addEventListener('mouseover', () => {
     equals.style.background = 'black';
@@ -60,16 +60,16 @@ plus.addEventListener('click', () => {
     operator = "+";
     if (smlOutputArray.includes('*')) {
         complexTimes();
-    } else if (smlOutputArray.includes('-')) {
-        complexMinus();
     } else if (smlOutputArray.includes('/')) {
         complexDivide();
     } else if (smlOutputArray.includes('^')) {
         complexPower();
+    } else if (smlOutputArray.includes('-')) {
+        complexMinus();
     } else {
         memory = output.textContent;
         output.textContent = ``;
-        smlOutput.textContent = ` + ${Number(memory)+Number(smlOutput.textContent.slice(2, smlOutput.textContent.length))}`;
+        smlOutput.textContent = `${Number(memory)+Number(smlOutput.textContent.slice(0, smlOutput.textContent.length-2))} + `;
     };
 });
 plus.addEventListener('mouseover', () => plus.style.opacity = '0.1');
@@ -89,7 +89,7 @@ minus.addEventListener('click', () => {
     } else {
         memory = output.textContent;
         output.textContent = ``;
-        smlOutput.textContent = (smlOutput.textContent == '') ? ` - ${Number(memory)}` : ` - ${Number(smlOutput.textContent.slice(2, smlOutput.textContent.length))-Number(memory)}`;
+        smlOutput.textContent = (smlOutput.textContent == '') ? `${Number(memory)} - ` : `${Number(smlOutput.textContent.slice(0, smlOutput.textContent.length-2))-Number(memory)} - `;
     };
 });
 minus.addEventListener('mouseover', () => minus.style.opacity = '0.1');
@@ -100,16 +100,16 @@ times.addEventListener('click', () => {
     operator = "*";
     if (smlOutputArray.includes('+')) {
         complexAdd();
-    } else if (smlOutputArray.includes('-')) {
-        complexMinus();
     } else if (smlOutputArray.includes('/')) {
         complexDivide();
     } else if (smlOutputArray.includes('^')) {
         complexPower();
+    } else if (smlOutputArray.includes('-')) {
+        complexMinus();
     } else {
         memory = output.textContent;
         output.textContent = ``;
-        smlOutput.textContent = (smlOutput.textContent == '') ? ` * ${Number(memory)}` : ` x ${Number(memory)*Number(smlOutput.textContent.slice(2, smlOutput.textContent.length))}`;
+        smlOutput.textContent = (smlOutput.textContent == '') ? `${Number(memory)} * ` : `${Number(memory)*Number(smlOutput.textContent.slice(0, smlOutput.textContent.length-2))} * `;
     };
 });
 times.addEventListener('mouseover', () => times.style.opacity = '0.1');
@@ -120,16 +120,16 @@ divides.addEventListener('click', () => {
     operator = "/";
     if (smlOutputArray.includes('+')) {
         complexAdd();
-    } else if (smlOutputArray.includes('-')) {
-        complexMinus();
     } else if (smlOutputArray.includes('*')) {
         complexTimes();
     } else if (smlOutputArray.includes('^')) {
         complexPower();
+    } else if (smlOutputArray.includes('-')) {
+        complexMinus();
     } else {
         memory = output.textContent;
         output.textContent = ``;
-        smlOutput.textContent = (smlOutput.textContent == '') ? ` / ${Number(memory)}` : ` / ${Number(memory)/Number(smlOutput.textContent.slice(2, smlOutput.textContent.length))}`;
+        smlOutput.textContent = (smlOutput.textContent == '') ? `${Number(memory)} / ` : `${Number(memory)/Number(smlOutput.textContent.slice(0, smlOutput.textContent.length-2))} / `;
     };
 });
 divides.addEventListener('mouseover', () => divides.style.opacity = '0.1');
@@ -140,16 +140,16 @@ power_of.addEventListener('click', () => {
     operator = "^";
     if (smlOutputArray.includes('+')) {
         complexAdd();
-    } else if (smlOutputArray.includes('-')) {
-        complexMinus();
     } else if (smlOutputArray.includes('*')) {
         complexTimes();
     } else if (smlOutputArray.includes('/')) {
         complexDivide();
+    } else if (smlOutputArray.includes('-')) {
+        complexMinus();
     } else {
         memory = output.textContent;
         output.textContent = ``;
-        smlOutput.textContent = (smlOutput.textContent == '') ? ` ^ ${Number(memory)}` : ` ^ ${Number(memory)/Number(smlOutput.textContent.slice(2, smlOutput.textContent.length))}`;
+        smlOutput.textContent = (smlOutput.textContent == '') ? `${Number(memory)} ^ ` : `${Number(memory)/Number(smlOutput.textContent.slice(0, smlOutput.textContent.length-2))} ^ `;
     };
 });
 power_of.addEventListener('mouseover', () => power_of.style.opacity = '0.1');
@@ -279,28 +279,28 @@ function complexAdd() {
 
 
 function complexMinus() {
-    smlOutput.textContent = ` ${operator} ${subtract( Number(smlOutput.textContent.slice(2,smlOutput.textContent.length)), Number(output.textContent))}`;
+    smlOutput.textContent = `${subtract( Number(smlOutput.textContent.slice(0,smlOutput.textContent.length-2)), Number(output.textContent))} ${operator} `;
     output.textContent = ``;
     memory = smlOutput.textContent;
     clearPrompt = true;
 }
 
 function complexDivide() {
-    smlOutput.textContent = ` ${operator} ${divide( Number(smlOutput.textContent.slice(2,smlOutput.textContent.length)), Number(output.textContent))}`;
+    smlOutput.textContent = `${divide( Number(smlOutput.textContent.slice(0,smlOutput.textContent.length-2)), Number(output.textContent))} ${operator} `;
     output.textContent = ``;
     memory = smlOutput.textContent;
     clearPrompt = true;
 }
 
 function complexPower() {
-    smlOutput.textContent = ` ${operator} ${power( Number(smlOutput.textContent.slice(2,smlOutput.textContent.length)), Number(output.textContent))}`;
+    smlOutput.textContent = `${power( Number(smlOutput.textContent.slice(0,smlOutput.textContent.length-2)), Number(output.textContent))} ${operator} `;
     output.textContent = ``;
     memory = smlOutput.textContent;
     clearPrompt = true;
 }
 
 function complexTimes() {
-    smlOutput.textContent = ` ${operator} ${multiply( Number(smlOutput.textContent.slice(2,smlOutput.textContent.length)), Number(output.textContent))}`;
+    smlOutput.textContent = `${multiply( Number(smlOutput.textContent.slice(0,smlOutput.textContent.length-2)), Number(output.textContent))} ${operator} `;
     output.textContent = ``;
     memory = smlOutput.textContent;
     clearPrompt = true;

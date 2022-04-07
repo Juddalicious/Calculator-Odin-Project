@@ -33,26 +33,26 @@ body {
 
 #output {
     height: 40px;
-    width: 356px;
+    min-width: 20px;
+    max-width: 550px;
+    overflow: hidden;
     background: #303134;
     position: absolute;
     top: 40px;
     right: 19px;
     color: white;
-    direction: rtl;
     font-size: 2em;
     font-family: 'open sans';
 }
 
 #small-output {
     height: 20px;
-    width: 356px;
+    min-width: 20px;
     background: #303134;
     position: absolute;
     top: 15px;
     right: 19px;
     color: white;
-    direction: rtl;
     font-size: 1em;
     z-index: 3;
     font-family: 'open sans';
