@@ -44,6 +44,20 @@ body {
     font-family: 'open sans';
 }
 
+#small-output {
+    height: 20px;
+    width: 356px;
+    background: #303134;
+    position: absolute;
+    top: 15px;
+    right: 19px;
+    color: white;
+    direction: rtl;
+    font-size: 1em;
+    z-index: 3;
+    font-family: 'open sans';
+}
+
 .btn {
     background: white;
     opacity: 0;
@@ -60,5 +74,6 @@ body {
     height: 318px;
     position: absolute;
     z-index: -3;
+    user-select: none;
 }
 
