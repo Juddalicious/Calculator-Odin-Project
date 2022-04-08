@@ -234,7 +234,7 @@ zero.addEventListener('click', () => {
 zero.addEventListener('mouseover', () => zero.style.opacity = '0.1');
 zero.addEventListener('mouseout', () => zero.style.opacity = '0');
 
-point.addEventListener('click', () => output.textContent = `${output.textContent}.`};
+point.addEventListener('click', () => output.textContent = `${output.textContent}.`;
 point.addEventListener('mouseover', () => point.style.opacity = '0.1');
 point.addEventListener('mouseout', () => point.style.opacity = '0');
 
