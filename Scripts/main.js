@@ -271,7 +271,7 @@ const factorial = function () {
 
 
 function complexAdd() {
-    smlOutput.textContent = ` ${operator} ${add(Number(smlOutput.textContent.slice(2,smlOutput.textContent.length)), Number(output.textContent))}`;
+    smlOutput.textContent = `${add(Number(smlOutput.textContent.slice(2,smlOutput.textContent.length)), Number(output.textContent))} ${operator} `;
     output.textContent = ``;
     memory = smlOutput.textContent;
     clearPrompt = true;
